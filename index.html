@@ -69,10 +69,10 @@
 
         function createReceiptImage(fishType, price) {
             var receiptContainer = document.createElement("div");
-            receiptContainer.style.width = "200px";
-            receiptContainer.style.height = "300px";
+            receiptContainer.style.width = "400px";
+            receiptContainer.style.height = "600px";
             receiptContainer.style.backgroundColor = "#FFFFFF";
-            receiptContainer.style.padding = "20px";
+            receiptContainer.style.padding = "40px";
             receiptContainer.style.boxSizing = "border-box";
             receiptContainer.style.border = "1px solid #000000";
             receiptContainer.style.fontFamily = "Arial, sans-serif";
@@ -82,9 +82,9 @@
             receiptContainer.style.alignItems = "flex-start";
 
             var header = document.createElement("div");
-            header.style.fontSize = "18px";
+            header.style.fontSize = "36px";
             header.style.fontWeight = "bold";
-            header.style.marginBottom = "50px";
+            header.style.marginBottom = "100px";
             header.textContent = "The How Much is the Fish Company";
             receiptContainer.appendChild(header);
 
@@ -94,14 +94,14 @@
             fishAndPriceContainer.style.alignItems = "center";
 
             var fishTypeText = document.createElement("div");
-            fishTypeText.style.fontSize = "16px";
+            fishTypeText.style.fontSize = "32px";
             fishTypeText.style.textAlign = "left";
-            fishTypeText.style.marginRight = "20px";
+            fishTypeText.style.marginRight = "40px";
             fishTypeText.textContent = fishType;
             fishAndPriceContainer.appendChild(fishTypeText);
 
             var priceText = document.createElement("div");
-            priceText.style.fontSize = "16px";
+            priceText.style.fontSize = "32px";
             priceText.style.textAlign = "right";
             priceText.style.fontWeight = "bold";
             priceText.textContent = "$" + price;
@@ -111,7 +111,7 @@
 
             var totalPriceText = document.createElement("div");
             totalPriceText.style.marginTop = "auto";
-            totalPriceText.style.fontSize = "16px";
+            totalPriceText.style.fontSize = "32px";
             totalPriceText.style.fontWeight = "bold";
             totalPriceText.style.textAlign = "right";
             totalPriceText.textContent = "Total: $" + price;
@@ -119,8 +119,8 @@
 
             document.body.appendChild(receiptContainer);
 
-            var canvasWidth = 200;
-            var canvasHeight = 300;
+            var canvasWidth = 400;
+            var canvasHeight = 600;
 
             html2canvas(receiptContainer, { width: canvasWidth, height: canvasHeight }).then(function (canvas) {
                 var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
