@@ -5,13 +5,18 @@
     <meta charset="utf-8">
     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/redo.css' rel='stylesheet'>
     <link href='css/style.css' rel='stylesheet'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
   <title>How Much is the Fish?</title>
 </head>
 <body>
   <h1>How much is the fish?</h1>
   <h2 id="price">0$ </h2>
   <button onclick="location.reload();"><i class="gg-redo"></i>Ask again</button>
-
+  
+  <!-- Buy Fish Button -->
+  <button onclick="generateReceipt();">Buy for this price</button>
+  <div id="receipt-container"></div>
+  <!-- Buy Fish Button -->
   <script>
     function generatePrice() {
       var min = 0;
@@ -25,6 +30,48 @@
     function setup() {
   createCanvas(windowWidth, windowHeight);
 }
+
+//Buy Fish Button
+function generateReceipt() {
+  var fishTypes = [
+    "Salmon",
+    "Tuna",
+    "Cod",
+    "Sardine",
+    "Trout",
+    "Mackerel"
+  ];
+  var randomFishType = fishTypes[Math.floor(Math.random() * fishTypes.length)];
+
+  var priceText = document.getElementById("price").textContent;
+  var price = priceText.slice(0, -1); // Remove the $ sign
+
+  var receiptImage = createReceiptImage(randomFishType, price);
+
+  var receiptContainer = document.getElementById("receipt-container");
+  receiptContainer.innerHTML = '';
+  receiptContainer.appendChild(receiptImage);
+}
+
+function createReceiptImage(fishType, price) {
+  var canvas = createCanvas(300, 200);
+  canvas.parent('receipt-container');
+
+  background(255);
+  fill(220);
+  rect(10, 10, width - 20, height - 20);
+
+  fill(0);
+  textSize(18);
+  textAlign(CENTER);
+  text('Fish Type: ' + fishType, width / 2, height / 2 - 20);
+  text('Price: $' + price, width / 2, height / 2 + 20);
+
+  return canvas.elt;
+}
+
+
+//Buy Fish Button End
   </script>
 </body>
 </html>
