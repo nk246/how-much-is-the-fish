@@ -1,118 +1,137 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <meta charset="utf-8">
     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/redo.css' rel='stylesheet'>
-    <link href='css/style.css' rel='stylesheet'>
-   
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <title>How Much is the Fish?</title>
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.2/FileSaver.min.js"></script>
-
-  <title>How Much is the Fish?</title>
+    <style>
+    </style>
 </head>
 <body>
-  <h1>How much is the fish?</h1>
-  <h2 id="price">$0</h2>
-  <button onclick="location.reload();"><i class="gg-redo"></i>Ask again</button>
-  
-  <!-- Buy Fish Button
-  <button onclick="generateReceipt();">Buy for this price</button>
-  <div id="receipt-container"></div>
-  Buy Fish Button -->
-  <script>
-    function generatePrice() {
-      var min = 0;
-      var max = 250;
-      var price = (Math.random() * (max - min) + min).toFixed(2);
-      document.getElementById("price").textContent = "$" + price;
-    }
+    <h1>How much is the fish?</h1>
+    <h2 id="price">$0</h2>
+    <button onclick="location.reload();"><i class="gg-redo"></i>Ask again</button>
 
-    generatePrice();
+    <!-- Buy Fish Button -->
+    <button onclick="generateReceipt();">Buy for this price</button>
+    <div id="receipt-container"></div>
+    <!-- Buy Fish Button -->
 
-    function setup() {
-  createCanvas(windowWidth, windowHeight);
-}
+    <script>
+        function generatePrice() {
+            var min = 0;
+            var max = 250;
+            var price = (Math.random() * (max - min) + min).toFixed(2);
+            document.getElementById("price").textContent = "$" + price;
+        }
 
-/*
-//Buy Fish Button
-function generateReceipt() {
-  var fishTypes = [
-    "Salmon",
-    "Tuna",
-    "Cod",
-    "Sardine",
-    "Trout",
-    "Mackerel"
-  ];
-  var randomFishType = fishTypes[Math.floor(Math.random() * fishTypes.length)];
+        generatePrice();
 
-  var priceText = document.getElementById("price").textContent;
-  var price = priceText.slice(0, -1); // Remove the $ sign
+        //Buy Fish Button
+        function generateReceipt() {
+            var fishTypes = [
+                  "Salmon",
+                  "Tuna",
+                  "Trout",
+                  "Bass",
+                  "Mackerel",
+                  "Snapper",
+                  "Halibut",
+                  "Cod",
+                  "Sardine",
+                  "Grouper",
+                  "Catfish",
+                  "Swordfish",
+                  "Haddock",
+                  "Mahi Mahi",
+                  "Perch",
+                  "Flounder",
+                  "Red Snapper",
+                  "Yellowfin Tuna",
+                  "Rainbow Trout",
+                  "Sole",
+                  "Barramundi",
+                  "Walleye",
+                  "Bluefish",
+                  "Tilefish",
+                  "Pompano"
+                ];
+            var randomFishType = fishTypes[Math.floor(Math.random() * fishTypes.length)];
 
-  var receiptImage = createReceiptImage(randomFishType, price);
+            var priceText = document.getElementById("price").textContent;
+            var price = priceText.slice(1); // Remove the $ sign
 
-  var receiptContainer = document.getElementById("receipt-container");
-  receiptContainer.innerHTML = '';
-  receiptContainer.appendChild(receiptImage);
-}
+            createReceiptImage(randomFishType, price);
+        }
 
-function createReceiptImage(fishType, price) {
-  var container = document.createElement("div");
-  container.style.width = "300px";
-  container.style.height = "200px";
-  container.style.backgroundColor = "#FFFFFF";
-  container.style.padding = "10px";
-  container.style.boxSizing = "border-box";
+        function createReceiptImage(fishType, price) {
+            var receiptContainer = document.createElement("div");
+            receiptContainer.style.width = "200px";
+            receiptContainer.style.height = "300px";
+            receiptContainer.style.backgroundColor = "#FFFFFF";
+            receiptContainer.style.padding = "20px";
+            receiptContainer.style.boxSizing = "border-box";
+            receiptContainer.style.border = "1px solid #000000";
+            receiptContainer.style.fontFamily = "Arial, sans-serif";
+            receiptContainer.style.display = "flex";
+            receiptContainer.style.flexDirection = "column";
+            receiptContainer.style.justifyContent = "space-between";
+            receiptContainer.style.alignItems = "flex-start";
 
-  var header = document.createElement("div");
-  header.style.fontSize = "18px";
-  header.style.fontWeight = "bold";
-  header.style.marginBottom = "10px";
-  header.textContent = "The How Much is the Fish Company";
-  container.appendChild(header);
+            var header = document.createElement("div");
+            header.style.fontSize = "18px";
+            header.style.fontWeight = "bold";
+            header.style.marginBottom = "50px";
+            header.textContent = "The How Much is the Fish Company";
+            receiptContainer.appendChild(header);
 
-  var fishTypeText = document.createElement("div");
-  fishTypeText.textContent = "Fish Type: " + fishType;
-  container.appendChild(fishTypeText);
+            var fishAndPriceContainer = document.createElement("div");
+            fishAndPriceContainer.style.display = "flex";
+            fishAndPriceContainer.style.justifyContent = "space-between";
+            fishAndPriceContainer.style.alignItems = "center";
 
-  var priceText = document.createElement("div");
-  priceText.textContent = "Price: $" + price;
-  container.appendChild(priceText);
+            var fishTypeText = document.createElement("div");
+            fishTypeText.style.fontSize = "16px";
+            fishTypeText.style.textAlign = "left";
+            fishTypeText.style.marginRight = "20px";
+            fishTypeText.textContent = fishType;
+            fishAndPriceContainer.appendChild(fishTypeText);
 
-  var totalPriceText = document.createElement("div");
-  totalPriceText.style.marginTop = "auto";
-  totalPriceText.style.fontSize = "16px";
-  totalPriceText.style.fontWeight = "bold";
-  totalPriceText.textContent = "Total: $" + price;
-  container.appendChild(totalPriceText);
+            var priceText = document.createElement("div");
+            priceText.style.fontSize = "16px";
+            priceText.style.textAlign = "right";
+            priceText.style.fontWeight = "bold";
+            priceText.textContent = "$" + price;
+            fishAndPriceContainer.appendChild(priceText);
 
-  html2canvas(container).then(function(canvas) {
-    var image = canvas.toDataURL("image/png");
-    var link = document.createElement("a");
-    link.href = image;
-    link.download = "receipt.png";
+            receiptContainer.appendChild(fishAndPriceContainer);
 
-    var downloadButton = document.createElement("button");
-    downloadButton.textContent = "Download Receipt";
-    downloadButton.onclick = function() {
-      link.click();
-    };
+            var totalPriceText = document.createElement("div");
+            totalPriceText.style.marginTop = "auto";
+            totalPriceText.style.fontSize = "16px";
+            totalPriceText.style.fontWeight = "bold";
+            totalPriceText.style.textAlign = "right";
+            totalPriceText.textContent = "Total: $" + price;
+            receiptContainer.appendChild(totalPriceText);
 
-    var containerWithButton = document.createElement("div");
-    containerWithButton.appendChild(container);
-    containerWithButton.appendChild(downloadButton);
+            document.body.appendChild(receiptContainer);
 
-    var newTab = window.open();
-    newTab.document.body.innerHTML = containerWithButton.outerHTML;
-  });
-}
-*/
+            var canvasWidth = 200;
+            var canvasHeight = 300;
 
+            html2canvas(receiptContainer, { width: canvasWidth, height: canvasHeight }).then(function (canvas) {
+                var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+                var link = document.createElement("a");
+                link.href = image;
+                link.download = "receipt.png";
+                link.click();
 
-//Buy Fish Button End
-  </script>
+                receiptContainer.remove();
+            });
+        }
+    </script>
 </body>
 </html>
