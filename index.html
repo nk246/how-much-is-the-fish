@@ -5,24 +5,29 @@
     <meta charset="utf-8">
     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/redo.css' rel='stylesheet'>
     <link href='css/style.css' rel='stylesheet'>
+   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.2/FileSaver.min.js"></script>
+
   <title>How Much is the Fish?</title>
 </head>
 <body>
   <h1>How much is the fish?</h1>
-  <h2 id="price">0$ </h2>
+  <h2 id="price">$0</h2>
   <button onclick="location.reload();"><i class="gg-redo"></i>Ask again</button>
   
-  <!-- Buy Fish Button -->
+  <!-- Buy Fish Button
   <button onclick="generateReceipt();">Buy for this price</button>
   <div id="receipt-container"></div>
-  <!-- Buy Fish Button -->
+  Buy Fish Button -->
   <script>
     function generatePrice() {
       var min = 0;
       var max = 250;
       var price = (Math.random() * (max - min) + min).toFixed(2);
-      document.getElementById("price").textContent = price + "$";
+      document.getElementById("price").textContent = "$" + price;
     }
 
     generatePrice();
@@ -31,6 +36,7 @@
   createCanvas(windowWidth, windowHeight);
 }
 
+/*
 //Buy Fish Button
 function generateReceipt() {
   var fishTypes = [
@@ -54,21 +60,56 @@ function generateReceipt() {
 }
 
 function createReceiptImage(fishType, price) {
-  var canvas = createCanvas(300, 200);
-  canvas.parent('receipt-container');
+  var container = document.createElement("div");
+  container.style.width = "300px";
+  container.style.height = "200px";
+  container.style.backgroundColor = "#FFFFFF";
+  container.style.padding = "10px";
+  container.style.boxSizing = "border-box";
 
-  background(255);
-  fill(220);
-  rect(10, 10, width - 20, height - 20);
+  var header = document.createElement("div");
+  header.style.fontSize = "18px";
+  header.style.fontWeight = "bold";
+  header.style.marginBottom = "10px";
+  header.textContent = "The How Much is the Fish Company";
+  container.appendChild(header);
 
-  fill(0);
-  textSize(18);
-  textAlign(CENTER);
-  text('Fish Type: ' + fishType, width / 2, height / 2 - 20);
-  text('Price: $' + price, width / 2, height / 2 + 20);
+  var fishTypeText = document.createElement("div");
+  fishTypeText.textContent = "Fish Type: " + fishType;
+  container.appendChild(fishTypeText);
 
-  return canvas.elt;
+  var priceText = document.createElement("div");
+  priceText.textContent = "Price: $" + price;
+  container.appendChild(priceText);
+
+  var totalPriceText = document.createElement("div");
+  totalPriceText.style.marginTop = "auto";
+  totalPriceText.style.fontSize = "16px";
+  totalPriceText.style.fontWeight = "bold";
+  totalPriceText.textContent = "Total: $" + price;
+  container.appendChild(totalPriceText);
+
+  html2canvas(container).then(function(canvas) {
+    var image = canvas.toDataURL("image/png");
+    var link = document.createElement("a");
+    link.href = image;
+    link.download = "receipt.png";
+
+    var downloadButton = document.createElement("button");
+    downloadButton.textContent = "Download Receipt";
+    downloadButton.onclick = function() {
+      link.click();
+    };
+
+    var containerWithButton = document.createElement("div");
+    containerWithButton.appendChild(container);
+    containerWithButton.appendChild(downloadButton);
+
+    var newTab = window.open();
+    newTab.document.body.innerHTML = containerWithButton.outerHTML;
+  });
 }
+*/
 
 
 //Buy Fish Button End

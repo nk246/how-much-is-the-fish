@@ -4,6 +4,7 @@
       background-color: #E1F5FE;
       text-align: center;
       font-family: Arial, sans-serif;
+      overflow: hidden;
     }
     h1 {
       font-size: 32px;
