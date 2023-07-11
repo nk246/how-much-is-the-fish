@@ -62,7 +62,7 @@
             var randomFishType = fishTypes[Math.floor(Math.random() * fishTypes.length)];
 
             var priceText = document.getElementById("price").textContent;
-            var price = priceText.slice(1); // Remove the $ sign
+            var price = priceText.slice(1);
 
             createReceiptImage(randomFishType, price);
         }

@@ -5,6 +5,7 @@
       text-align: center;
       font-family: Arial, sans-serif;
       overflow: hidden;
+      cursor: url("css/fish-cursor.png") auto;
     }
     h1 {
       font-size: 32px;
@@ -17,8 +18,8 @@
     }
     button {
       display: flex;
-      align-items: center; /* Align items vertically */
-      justify-content: center; /* Align items horizontally */
+      align-items: center; 
+      justify-content: center; 
       padding: 10px 20px;
       font-size: 24px;
       background-color: #2196F3;
@@ -26,7 +27,7 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      margin: 0 auto; /* Center the button horizontally */
+      margin: 0 auto; 
       margin-top: 1em !important;
     }
     button:hover {
@@ -44,7 +45,7 @@
     border-right-color: transparent;
     border-radius: 100px;
     transition: transform 0.5s;
-    margin-right: 5px; /* Add margin for spacing */
+    margin-right: 5px;
     }
 
     .gg-redo::before {
