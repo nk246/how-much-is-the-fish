@@ -29,6 +29,7 @@
       cursor: pointer;
       margin: 0 auto; 
       margin-top: 1em !important;
+          cursor: url("css/fish-cursor.png") auto;
     }
     button:hover {
       background-color: #1976D2;
