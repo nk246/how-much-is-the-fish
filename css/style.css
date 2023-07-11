@@ -5,7 +5,7 @@
       text-align: center;
       font-family: Arial, sans-serif;
       overflow: hidden;
-      cursor: url("fish-cursor.png") auto;
+      cursor: url("css/fish-cursor.png") auto;
     }
     h1 {
       font-size: 32px;
